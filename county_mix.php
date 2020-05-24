@@ -63,6 +63,12 @@ $county_data = "1. Mombasa. – Hassan Ali Joho – ODM,
     <head>
         <title>County Mix</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>
+
+        /*making the page responsive*/
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="HandheldFriendly" content="true">
+
     </head>
     <body>
         <div id="wrapper">
@@ -72,9 +78,9 @@ $county_data = "1. Mombasa. – Hassan Ali Joho – ODM,
                 <thead>
                     <tr>
                         <th><span>#</span></th>
-                        <th><span>Name</span></th>
-                        <th><span>Governor</span></th>
-                        <th><span>Website</span></th>
+                        <th><span>NAME</span></th>
+                        <th><span>GOVERNOR</span></th>
+                        <th><span>WEBSITE</span></th>
                     </tr>
                 </thead>
                 <tbody>
