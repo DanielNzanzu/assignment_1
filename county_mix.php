@@ -56,5 +56,42 @@ $county_data = "1. Mombasa. – Hassan Ali Joho – ODM,
 */
 
 // @TODO : Your code starts here
-
 ?>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>County Mix</title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+    </head>
+    <body>
+        <div id="wrapper">
+            <h1>Table of Kenyan Governors</h1>
+
+            <table id="keywords" cellspacing="0" cellpadding="0" >
+                <thead>
+                    <tr>
+                        <th><span>#</span></th>
+                        <th><span>Name</span></th>
+                        <th><span>Governor</span></th>
+                        <th><span>Website</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="lalign">1</td>
+                        <td>Nairobi</td>
+                        <td>Mike Sonko</td>
+                        <td>https://www.nairobi.go.ke/</td>
+                    </tr>
+                    <tr>
+                        <td class="lalign">2</td>
+                        <td>Mombasa</td>
+                        <td>Assan Joho</td>
+                        <td>http://www.mombasa.go.ke/</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
