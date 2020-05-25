@@ -64,7 +64,7 @@ $unwantedCharacters = array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9","."
 <!DOCTYPE html>
 <html>
     <head>
-        <title>County Mix</title>
+        <title>County_Mix Kenya </title>
         <link rel="stylesheet" type="text/css" href="style.css"/>
 
 
@@ -77,13 +77,13 @@ $unwantedCharacters = array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9","."
         <div id="wrapper">
             <h1>Table of Kenyan Governors</h1>
 
-            <table id="keywords" cellspacing="0" cellpadding="0" >
+            <table id="keywords" cellspacing="0" cellpadding="0" style="overflow-x:auto;">
                 <thead>
                     <tr>
                         <th><span>#</span></th>
                         <th><span>NAME</span></th>
                         <th><span>GOVERNOR</span></th>
-                        <th><span>PARTY</span></th>
+                        <th hidden><span>PARTY</span></th>
                         <th><span>WEBSITE</span></th>
                     </tr>
                 </thead>
@@ -97,11 +97,41 @@ $unwantedCharacters = array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9","."
                     <tr>
                         <td class="lalign"><?php echo $j++?></td>
                         <td><?php
-                            $cleanString = str_replace($unwantedCharacters, "", $getData[0]);
-                            echo $cleanString;?></td>
-                        <td><?php
-                            echo $getData[1];?></td>
-                        <td><?php
+                            $unwantedCharacters = array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9","."," ' ");
+                            echo $countyName = str_replace($unwantedCharacters, "",$getData[0]);
+                            ?>
+                        </td>
+                        <td>        <?php
+                            if(!empty($getData[2])){
+                                echo $getData[1];
+                                if($getData[2]=="ODM"){ ?>
+                                    <img width="7%" height="30%" src="images/odm.png">
+                                <?php }elseif ($getData[2]=="Jubilee"){ ?>
+                                    <img width="5%" height="5%" src="images/jubilee.png">
+                                <?php }elseif ($getData[2]=="KANU"){ ?>
+                                    <img width="8%" height="10%" src="images/kanu.gif">
+                                <?php }elseif ($getData[2]=="WDM K"||$getData[2]=="WDM K."){ ?>
+                                    <img width="7%" height="10%" src="images/wdm.png">
+                                <?php } elseif ($getData[2]=="CCM"){ ?>
+                                    <img width="10%" height="10%" src="images/ccm.jpg">
+                                <?php } elseif ($getData[2]=="FORD Kenya"){ ?>
+                                    <img width="6%" height="7%" src="images/ford.png">
+                                <?php } elseif ($getData[2]=="Narc Kenya"){ ?>
+                                    <img width="15%" height="10%" src="images/narc.png">
+                                <?php }
+                            }
+                            else {
+                                if(strpos($getData[1],"- Jubilee")){
+                                    echo str_replace("- Jubilee","",$getData[1]);?>
+                                    <img width="5%" height="5%" src="images/jubilee.png">
+                                <?php }
+                                else if(strpos($getData[1],"- ODM")){
+                                    echo str_replace("- ODM","",$getData[1]);?>
+                                    <img width="7%" height="30%" src="images/odm.png">
+                                <?php }
+                            }?>
+                        </td>
+                        <td hidden><?php
                             if(!empty($getData[2])){
                                 if($getData[2] == "WDM K."){
                                     echo "WDM K";
@@ -118,10 +148,12 @@ $unwantedCharacters = array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9","."
                                 }
                             }?></td>
                         <?php
-                        $cleanString = str_replace($unwantedCharacters, "", $getData[0]);
-                        $link = strtolower(str_replace(' ', '', $cleanString));?>
-                        <td><a target="_BLANK"
-                               href="http://<?php echo $link?>.go.ke">http://<?php echo $link;?>.go.ke</a></td>
+                        $countyName = str_replace($unwantedCharacters, "", $getData[0]);
+                        //tanariver
+                        $unwantedValuesinlink = array('-'," "," ' ");
+                        $link = (str_replace($unwantedValuesinlink, '', $countyName));?>
+                        <?php //echo strtolower(str_replace(' ', '', $cleanString));?>
+                        <td><a target="_BLANK" href ="https://www.<?php echo strtolower($link);?>.go.ke">https://<?php echo strtolower($link);?>.go.ke</a></td>
                     </tr>
                     <?php
                 }
