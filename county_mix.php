@@ -56,6 +56,9 @@ $county_data = "1. Mombasa. – Hassan Ali Joho – ODM,
 */
 
 // @TODO : Your code starts here
+$extrapolateData = explode(",",$county_data);
+$arrlength = count($extrapolateData);
+$unwantedCharacters = array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9","."," ' ");
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +67,7 @@ $county_data = "1. Mombasa. – Hassan Ali Joho – ODM,
         <title>County Mix</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>
 
-        /*making the page responsive*/
+
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="HandheldFriendly" content="true">
@@ -80,22 +83,49 @@ $county_data = "1. Mombasa. – Hassan Ali Joho – ODM,
                         <th><span>#</span></th>
                         <th><span>NAME</span></th>
                         <th><span>GOVERNOR</span></th>
+                        <th><span>PARTY</span></th>
                         <th><span>WEBSITE</span></th>
                     </tr>
                 </thead>
                 <tbody>
+                <?php
+                $j=1;
+                for($x = 0; $x < $arrlength; $x++) {
+                $getData = explode(" – ",$extrapolateData[$x]);
+                $datalength = count($getData);
+                ?>
                     <tr>
-                        <td class="lalign">1</td>
-                        <td>Nairobi</td>
-                        <td>Mike Sonko</td>
-                        <td>https://www.nairobi.go.ke/</td>
+                        <td class="lalign"><?php echo $j++?></td>
+                        <td><?php
+                            $cleanString = str_replace($unwantedCharacters, "", $getData[0]);
+                            echo $cleanString;?></td>
+                        <td><?php
+                            echo $getData[1];?></td>
+                        <td><?php
+                            if(!empty($getData[2])){
+                                if($getData[2] == "WDM K."){
+                                    echo "WDM K";
+                                }else{
+                                    echo $getData[2];
+                                }
+                            }
+                            else {
+                                if(strpos($getData[1],"- Jubilee")){
+                                    echo "Jubilee";
+                                }
+                                elseif(strpos($getData[1],"- ODM")){
+                                    echo "ODM";
+                                }
+                            }?></td>
+                        <?php
+                        $cleanString = str_replace($unwantedCharacters, "", $getData[0]);
+                        $link = strtolower(str_replace(' ', '', $cleanString));?>
+                        <td><a target="_BLANK"
+                               href="http://<?php echo $link?>.go.ke">http://<?php echo $link;?>.go.ke</a></td>
                     </tr>
-                    <tr>
-                        <td class="lalign">2</td>
-                        <td>Mombasa</td>
-                        <td>Assan Joho</td>
-                        <td>http://www.mombasa.go.ke/</td>
-                    </tr>
+                    <?php
+                }
+                ?>
                 </tbody>
             </table>
         </div>
